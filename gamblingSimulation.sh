@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 echo "**********Welcome to Gambling Simulator Problem**********"
 
 #CONSTANTS
@@ -8,15 +8,24 @@ BET_PER_GAME=1
 #VARIABLES
 cash=$STAKE_PER_DAY
 
-#function is used to check win or loose condition
-function checkCondition(){
+function calculatePercentage(){
+   MAXIMUM_RESULT=$(($STAKE_PER_DAY+(50*$STAKE_PER_DAY/100)))  
+   MINIMUM_RESULT=$(($STAKE_PER_DAY-(50*$STAKE_PER_DAY/100)))
+}
+calculatePercentage
+
+function calculateGambler(){
+while [[ $cash -gt $MINIMUM_RESULT && $cash -lt $MAXIMUM_RESULT ]]
+do
 RandomCheck=$(($RANDOM%2))
-	if [ 1 -eq $RandomCheck ]
+	if [[ 1 -eq $RandomCheck ]]
 	then
-		cash=$STAKE_PER_DAY+$BET_PER_GAME
+		cash=$(($cash+$BET_PER_GAME))
 	else
-		cash=$STAKE_PER_DAY-$BET_PER_GAME
+		cash=$(($cash-$BET_PER_GAME))
 	fi
+	echo $cash
+done
 }
 
-checkCondition
+calculateGambler
