@@ -51,5 +51,15 @@ else
 fi
 }
 
+#function is used to sort
+function sorting(){
+for i in ${!countMonths[@]}
+do
+	echo "$i amount::${countMonths[$i]}"
+done | sort -rn -k2
+}
+
 calculatePercentage
 calculateTotalAmount
+echo Luckiest day:: $(sorting | head -1 )
+echo Unluckiest day:: $(sorting | tail -1 )
