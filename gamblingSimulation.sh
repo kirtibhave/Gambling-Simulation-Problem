@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 echo "**********Welcome to Gambling Simulator Problem**********"
 
@@ -35,12 +35,12 @@ function calculateGambler(){
 
 #function is used to calculate total amount won or loose after 20 days
 function calculateTotalAmount(){
-for ((day=1;day<=2;day++))
-do
-	totalAmount=$((totalAmount + $(calculateGambler) ))
-	countMonths[day$day]=$totalAmount;
-done
-	echo "total amount is: $totalAmount"
+	for ((day=1;day<=20;day++))
+	do
+		totalAmount=$((totalAmount + $(calculateGambler) ))
+		countMonths[day$day]=$totalAmount;
+	done
+		echo "total amount is: $totalAmount"
 
 if [ $totalAmount -gt 0 ]
 then
@@ -52,4 +52,3 @@ fi
 
 calculatePercentage
 calculateTotalAmount
-
