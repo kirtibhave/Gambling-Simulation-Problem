@@ -39,6 +39,7 @@ function calculateTotalAmount(){
 	do
 		totalAmount=$((totalAmount + $(calculateGambler) ))
 		countMonths[day$day]=$totalAmount;
+		echo day$day  amount is:${countMonths[day$day]}
 	done
 		echo "total amount is: $totalAmount"
 
